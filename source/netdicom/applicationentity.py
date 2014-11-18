@@ -189,10 +189,14 @@ class Association(threading.Thread):
 
                 # check for release request
                 if self.ACSE.CheckRelease():
+                    if 'OnRelease' in self.AE.__dict__:
+                        self.AE.OnRelease()
                     self.Kill()
 
                 # check for abort
                 if self.ACSE.CheckAbort():
+                     if 'OnAbort' in self.AE.__dict__:
+                         self.AE.OnAbort()
                     self.Kill()
                     return
 
@@ -204,9 +208,9 @@ class Association(threading.Thread):
                 # check if idle timer has expired
                 logger.debug("checking DUL idle timer")
                 if self.DUL.idle_timer_expired():
-                    logger.warning('%s: DUL provider idle timer expired' % (self.name))  
+                    logger.warning('%s: DUL provider idle timer expired' % (self.name))
                     self.Kill()
- 
+
 
 
 
