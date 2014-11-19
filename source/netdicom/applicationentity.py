@@ -195,8 +195,8 @@ class Association(threading.Thread):
 
                 # check for abort
                 if self.ACSE.CheckAbort():
-                     if 'OnAbort' in self.AE.__dict__:
-                         self.AE.OnAbort()
+                    if 'OnAbort' in self.AE.__dict__:
+                        self.AE.OnAbort()
                     self.Kill()
                     return
 
